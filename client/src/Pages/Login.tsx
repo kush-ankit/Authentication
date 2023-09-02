@@ -1,8 +1,5 @@
-import React from 'react'
 import Input from '@mui/material/Input';
 import { Button } from '@mui/material';
-
-
 
 
 function Login() {
@@ -22,4 +19,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Login;

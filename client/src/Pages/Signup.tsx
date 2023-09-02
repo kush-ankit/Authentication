@@ -1,8 +1,18 @@
-import React from 'react'
 
 function Signup() {
   return (
-    <div>Signup</div>
+    <div>
+      <div>
+        <header>Sign Up</header>
+        <main>
+          <form>
+            <input type="text" />
+            <input type="password" />
+          </form>
+        </main>
+        <footer></footer>
+      </div>
+    </div>
   )
 }
 
