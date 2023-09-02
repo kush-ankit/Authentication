@@ -1,4 +1,3 @@
-import React from 'react'
 import Input from '@mui/material/Input';
 import { Button } from '@mui/material';
 
@@ -11,8 +10,9 @@ function Login() {
       <div>
         <h1 className='font-semibold text-lg py-4'>Login Tab</h1>
       </div>
+      div
       <div className='flex flex-col gap-2'>
-        <Input placeholder='Username' />
+        <Input placeholder='Username' color='secondary' required />
         <Input placeholder='Password' />
       </div>
       <div className='py-2'>
