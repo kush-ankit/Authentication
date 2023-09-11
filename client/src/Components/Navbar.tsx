@@ -4,9 +4,9 @@ import { Link } from "react-router-dom"
 
 function Navbar() {
   return (
-    <div className='links flex-row-reverse'>
-        <Link className='hover:text-blue-500' to='/signup'>Signup</Link>
-        <Link className='hover:text-blue-500' to='./login'>Login</Link>
+    <div className='links flex-row-reverse bg-red-400 rounded-xl p-2'>
+        <Link className='hover:bg-red-300 p-1 rounded-md' to='/signup'>Signup</Link>
+        <Link className='hover:bg-red-300 p-1 rounded-md' to='./login'>Login</Link>
     </div>
   )
 }
