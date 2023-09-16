@@ -4,17 +4,17 @@ import Login from "./Pages/Login"
 import Signup from "./Pages/Signup"
 import Home from "./Pages/Home"
 import Layout from "./Layout"
-import { useAppStore } from './Global/App-state.ts';
+import { useAppStore } from './Global/App-state';
 import { useEffect } from 'react'
-
 
 function App() {
 
-  const [setIsInitialized] = useAppStore((state) => [state.setIsInitialized])
+  const [setIsInitialized] = useAppStore((state) => [state.setIsInitialized]);
 
   useEffect(() => {
     setIsInitialized(true);
-  },[])
+    console.log()
+  },[]);
 
 
   return (
@@ -30,4 +30,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
