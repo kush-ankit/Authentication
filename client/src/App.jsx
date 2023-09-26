@@ -13,7 +13,6 @@ function App() {
 
   useEffect(() => {
     setIsInitialized(true);
-    console.log()
   },[]);
 
 

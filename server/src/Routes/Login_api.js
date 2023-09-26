@@ -1,6 +1,6 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const UserSchema = require('../Schema/UserSchema')
+const UserModel = require('../Models/UserModel')
+const { DecriptedData } = require('../Tools/Encript');
 
 const loginRouter = express.Router();
 
@@ -9,13 +9,21 @@ loginRouter.get('/', (req, res) => {
 });
 
 
-loginRouter.post('/', (req, res) => {
+loginRouter.post('/', async (req, res) => {
     let data = req.body;
-    console.log(data);
-    const userModel = mongoose.model('registereduser', UserSchema);
-    const doc = new userModel(data);
-    doc.save(); 
-    res.send(data);
+    let fetchData = await UserModel.findOne({ phone: data.phone }).exec();
+    if (fetchData !== null) {
+        DecriptedData(data.password, fetchData.password)
+            ? res.status(200).send({
+                fullName: fetchData.fullName,
+                phone: fetchData.phone,
+                email: fetchData.email,
+                password: fetchData.password,
+            }) : res.status(204).send({ error: 'Password does not match' });
+    } else {
+        res.status(204).send({ error: data.phone + ' does not exist' });
+    }
+
 });
 
-module.exports = loginRouter;
+module.exports = loginRouter; 

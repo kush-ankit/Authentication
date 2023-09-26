@@ -1,24 +1,39 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useUserStore } from '../Global/User-state';
+import { Redirect } from 'react-router-dom';
+
 
 function Login() {
+
+    const [setUserDetails] = useUserStore((state) => [state.setUserDetails]);
+
 
     const [user, setUser] = useState({
         phone: "",
         password: ""
     });
-    
 
-    function handleClick() {
-        axios.post('http://localhost:3001/login',user).then((res) => {
-            console.log(res.data);
+
+    async function handleClick() {
+        <Redirect to="/dashboard" />
+        await axios.post('http://192.168.1.35:3001/login', user).then((res) => {
+            if (res.status === 200) {
+                setUserDetails(
+                    res.data.fullName,
+                    res.data.phone,
+                    res.data.email,
+                    res.data.password,
+                )
+            }
         })
+
     }
 
-    function handleChange(fieldName, value){
-        let dataset={};
-        dataset[fieldName]=value;
-        const userData = {...user, ...dataset}
+    function handleChange(fieldName, value) {
+        let dataset = {};
+        dataset[fieldName] = value;
+        const userData = { ...user, ...dataset }
         setUser(userData)
     }
 
