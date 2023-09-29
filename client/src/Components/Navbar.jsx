@@ -8,21 +8,21 @@ function Navbar() {
 
   const [setUserLogout] = useUserStore((state) => [state.setUserLogout]);
 
-  const [isLoggedIn,currentUser] = useAppStore((state) => [state.isLoggedIn,state.currentUser]);
+  const [isLoggedIn, currentUser] = useAppStore((state) => [state.isLoggedIn, state.currentUser]);
 
   return (
-    <div className='links flex-row-reverse justify-between bg-red-400 rounded-xl p-2'>
-      {
-        !isLoggedIn ? (<div>
-          <Link className='hover:bg-red-300 p-1 rounded-md' to='/signup'>Signup</Link>
-          <Link className='hover:bg-red-300 p-1 rounded-md' to='./login'>Login</Link>
-        </div>):(<button onClick={()=>{setUserLogout()}}>Logout</button>)
-      }
-      <div>
+    <div className='form-a links flex flex-row justify-between rounded-xl p-2'>
+      <div className='text-black'>
         {
           currentUser
         }
       </div>
+      {
+        !isLoggedIn ? (<div>
+          <Link className='button-confirm px-4' to='/signup'>Signup</Link>
+          <Link className='button-confirm px-4 mx-2' to='./login'>Login</Link>
+        </div>) : (<div><Link onClick={() => { setUserLogout() }} className='button-confirm px-4' to='/'>Logout</Link></div>)
+      }
     </div>
   )
 }
